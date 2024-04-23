@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_10_201407) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_11_065707) do
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -22,4 +22,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_201407) do
     t.index ["longitude"], name: "index_locations_on_longitude"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_tasks_on_location_id"
+  end
+
+  create_table "todos", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "tasks", "locations"
 end

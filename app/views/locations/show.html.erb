@@ -1,10 +1,28 @@
-<p style="color: green"><%= notice %></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Location Details</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="alert alert-success mt-3" role="alert">
+      <%= notice %>
+    </div>
 
-<%= render @location %>
+    <%= render @location %>
 
-<div>
-  <%= link_to "Edit this location", edit_location_path(@location) %> |
-  <%= link_to "Back to locations", locations_path %>
+    <div class="mt-3">
+      <%= link_to "Edit this location", edit_location_path(@location), class: "btn btn-primary mr-2" %>
+      <%= link_to "Back to locations", locations_path, class: "btn btn-secondary mr-2" %>
+      <%= button_to "Destroy this location", @location, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    </div>
+  </div>
 
-  <%= button_to "Destroy this location", @location, method: :delete %>
-</div>
+  <!-- Bootstrap JS (optional, if you need Bootstrap JavaScript features) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

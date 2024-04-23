@@ -1,19 +1,40 @@
-<p style="color: green"><%= notice %></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locations</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <p class="text-success"><%= notice %></p>
 
-<h1>Locations</h1>
+    <h1>Locations</h1>
 
-<%= form_with url: locations_path, method: :get do |form| %>
-  <%= form.text_field :place, value: params[:place] %>
-  <%= form.submit %>
-<% end%>
-<!--Ruby on rails #106 how to use gem geocoder, gps coordinates, distance calculation, map markers 8:59-->
-<div id="locations">
-  <% @locations.each do |location| %>
-    <%= render location %>
-    <p>
-      <%= link_to "Show this location", location %>
-    </p>
-  <% end %>
-</div>
+    <%= form_with url: locations_path, method: :get, class: "mt-3 mb-3" do |form| %>
+      <div class="input-group">
+        <%= form.text_field :place, value: params[:place], class: "form-control" %>
+        <div class="input-group-append">
+          <%= form.submit "Search", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
 
-<%= link_to "New location", new_location_path %>
+    <div id="locations" class="mt-3">
+      <% @locations.each do |location| %>
+        <%= render location %>
+        <p>
+          <%= link_to "Show this location", location, class: "btn btn-secondary" %>
+        </p>
+      <% end %>
+    </div>
+
+    <%= link_to "New location", new_location_path, class: "btn btn-success mt-3" %>
+  </div>
+
+  <!-- Bootstrap JS (optional, if you need Bootstrap JavaScript features) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
