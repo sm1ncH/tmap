@@ -12,8 +12,13 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.select :location_id, Location.all.collect { |l| [l.name, l.id] }, { include_blank: "Select a location" } %>
+
   </div>
 
   <div>

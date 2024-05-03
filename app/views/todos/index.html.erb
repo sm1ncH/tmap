@@ -1,32 +1,14 @@
-<h1 class="text-2xl">Todo List</h1>
+<p style="color: green"><%= notice %></p>
 
-<%= form_with(model: Todo.new, class: "my-10") do |form| %>
-  <div class="my-5">
-    <%= form.label :description %>
-    <%= form.text_field :description, placeholder: "new todo", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-2/4" %>
-  </div>
+<h1>Todos</h1>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
-  <table class="w-3/5 mt-10 border-separate table-auto text-slate-500">
-  <thead>
-    <tr>
-      <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">ID</th>
-      <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @todos.each do |todo| %>
-      <tr>
-        <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
-          <%= todo.id %>
-        </td>
-        <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
-          <%= todo.description %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %>
+<div id="todos">
+  <% @todos.each do |todo| %>
+    <%= render todo %>
+    <p>
+      <%= link_to "Show this todo", todo %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New todo", new_todo_path %>
