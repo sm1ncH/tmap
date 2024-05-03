@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   resources :locations
+  resource :registration
+  resource :session
+  resource :password_reset
+  resources :password 
+
 
   resources :todos, only: [:index, :create]
   get '/todos', to: 'todos#task'
@@ -13,4 +18,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  get "sign_up", to: "registrations#new"
+  root "main#index"
 end

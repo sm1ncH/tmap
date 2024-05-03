@@ -5,12 +5,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+  <div><%= notice %></div>
+  <div><%= alert %></div>
+
+  <% if user_signed_in? %>
+    <%= button_to "Log out", session_path, method: :delete %>
+    <%= link_to "Locations", locations_path %>
+  <% else %>
+    <%= link_to "Sign up", new_registration_path %>
+    <%= link_to "Log in", new_session_path %>
+  <%end%>
+
     <%= yield %>
   </body>
 </html>
