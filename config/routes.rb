@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "sign_up", to: "registrations#new"
-  root "main#index"
+  root "todos#index"
 end

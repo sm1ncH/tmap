@@ -15,13 +15,14 @@
   <div><%= alert %></div>
 
   <% if user_signed_in? %>
+    <%= link_to "Home", root_path %>
     <%= button_to "Log out", session_path, method: :delete %>
-    <%= link_to "Locations", locations_path %>
   <% else %>
     <%= link_to "Sign up", new_registration_path %>
     <%= link_to "Log in", new_session_path %>
   <%end%>
-
+  <div class="todo">
+  </div>
     <%= yield %>
   </body>
 </html>
