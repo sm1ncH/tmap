@@ -1,12 +1,8 @@
-<div id="<%= dom_id todo %>">
-  <p>
-    <strong>Description:</strong>
-    <%= todo.description %>
-  </p>
-
-  <p>
-    <strong>Location:</strong>
-    <%= todo.location.name %>
-  </p>
-
+<div id="<%= dom_id todo %>" class="card todo-item">
+  <div class="card-body">
+    <h5 class="card-title"style="color:#007bff">Task Description</h5>
+    <p class="card-text"><strong>Description:</strong> <%= todo.description %></p>
+    <h5 class="card-title" style="color:#007bff">Location</h5>
+    <p class="card-text"><strong>Location:</strong> <%= todo.location.name %></p>
+  </div>
 </div>

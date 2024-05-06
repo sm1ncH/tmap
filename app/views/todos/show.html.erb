@@ -1,10 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <% if notice.present? %>
+    <div class="alert alert-success mt-4" role="alert">
+      <%= notice %>
+    </div>
+  <% end %>
 
-<%= render @todo %>
+  <%= render @todo %>
 
-<div>
-  <%= link_to "Edit this todo", edit_todo_path(@todo) %> |
-  <%= link_to "Back to todos", todos_path %>
-
-  <%= button_to "Destroy this todo", @todo, method: :delete %>
+  <div class="mt-4">
+    <%= link_to "Edit this todo", edit_todo_path(@todo), class: "btn btn-primary mr-2" %> |
+    <%= link_to "Back to todos", todos_path, class: "btn btn-secondary mr-2" %>
+    <%= button_to "Destroy this todo", @todo, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+  </div>
 </div>

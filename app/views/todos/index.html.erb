@@ -1,16 +1,80 @@
-<p style="color: green"><%= notice %></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    /* Custom Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    h1 {
+      color: #007bff;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .todo-item {
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .todo-item p {
+      margin-bottom: 5px;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
 
-<h1>Your To Do list:</h1>
-
-<div id="todos">
-  <% @todos.each do |todo| %>
-    <%= render todo %>
-    <p>
-      <%= link_to "Show this todo", todo %>
-    </p>
+<div class="container">
+  <!-- Notice -->
+  <% if notice.present? %>
+    <div class="alert alert-success" role="alert">
+      <%= notice %>
+    </div>
   <% end %>
+
+  <!-- Todo List -->
+  <h1>Your To-Do List</h1>
+  <div id="todos">
+    <% @todos.each do |todo| %>
+      <div class="todo-item">
+        <%= render todo %>
+        <p>
+          <%= link_to "Show this todo", todo, class: "btn btn-primary btn-sm" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Actions -->
+  <div class="text-center mt-4">
+    <%= link_to "New Todo", new_todo_path, class: "btn btn-primary mr-2" %>
+    <%= link_to "Browse Locations", locations_path, class: "btn btn-secondary" %>
+  </div>
 </div>
 
-<%= link_to "New todo", new_todo_path %><br>
-<%= link_to "Browse locations", locations_path %>
+<!-- Bootstrap JS (optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+</body>
+</html>
