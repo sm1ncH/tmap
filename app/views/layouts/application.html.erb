@@ -12,6 +12,7 @@
     /* Custom Styles */
     .navbar {
       background-color: #007bff !important;
+      border: none !important;
     }
     .navbar-brand {
       color: #fff;
@@ -37,7 +38,7 @@
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li class="nav-item" style='background-collor:#007bff'>
-            <%= button_to "Log out", session_path, method: :delete, class: "nav-link" %>
+            <%= link_to "Log out", session_path, data: {turbo_method: :delete}, class: "nav-link" %>
           </li>
         <% else %>
           <li class="nav-item">
