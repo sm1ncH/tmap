@@ -36,7 +36,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
-          <li class="nav-item">
+          <li class="nav-item" style='background-collor:#007bff'>
             <%= button_to "Log out", session_path, method: :delete, class: "nav-link" %>
           </li>
         <% else %>
