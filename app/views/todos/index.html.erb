@@ -1,20 +1,9 @@
 <!DOCTYPE html>
-<!--
- @license
- Copyright 2019 Google LLC. All Rights Reserved.
- SPDX-License-Identifier: Apache-2.0
--->
+
 <html>
   <head>
     <script>
-      /**
-       * @license
-       * Copyright 2019 Google LLC. All Rights Reserved.
-       * SPDX-License-Identifier: Apache-2.0
-       */
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+      
       function initMap() {
         const map = new google.maps.Map(document.getElementById("map"), {
           center: { lat: 46.362274, lng: 15.110658 },
@@ -28,7 +17,23 @@
             position: { lat: <%= todo.location.latitude %>, lng: <%= todo.location.longitude %> },
             map: map,
             description: '<%= todo.description %>' // optional: display description on marker
+
+
           });
+// on click display description in infowindow and make a obtion to delete the todo 
+
+          marker_<%= todo.id %>.addListener("click", () => {
+            const infowindow = new google.maps.InfoWindow({
+              content: `<h3>${marker_<%= todo.id %>.description}</h3>
+              <a href="/todos/<%= todo.id %>" data-method="delete" data-confirm="Are you sure?" data-turbo-frame="_top">Delete</a>`
+            });
+            infowindow.open(map, marker_<%= todo.id %>);
+          });
+          // if you click again on the marker the infowindow will close
+          marker_<%= todo.id %>.addListener("click", () => {
+            infowindow.close();
+          });
+
         <% end %>
       }
       showCurrentLocation(Map);
