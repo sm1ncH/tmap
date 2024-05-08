@@ -1,69 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Todo App</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Custom CSS -->
-  <style>
-    /* Custom Styles */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-    }
-    .container {
-      margin-top: 50px;
-    }
-    h1 {
-      color: #007bff;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-    .todo-item {
-      background-color: #fff;
-      border: 1px solid #ced4da;
-      border-radius: 5px;
-      padding: 15px;
-      margin-bottom: 15px;
-    }
-    .todo-item p {
-      margin-bottom: 5px;
-    }
-    .btn-primary {
-      background-color: #007bff;
-      border-color: #007bff;
-    }
-    .btn-primary:hover {
-      background-color: #0056b3;
-      border-color: #0056b3;
-    }
-  </style>
-</head>
-<body>
-
-<div class="container">
-  <!-- Notice -->
-  <% if notice.present? %>
-    <div class="alert alert-success" role="alert">
-      <%= notice %>
-    </div>
-  <% end %>
-
-  <!-- Todo List -->
-  <h1>Your To-Do List</h1>
-  <div id="todos">
-    <% @todos.each do |todo| %>
-      <div class="todo-item">
-        <%= render todo %>
-        <p>
-          <%= link_to "Show this todo", todo, class: "btn btn-primary btn-sm" %>
-        </p>
-      </div>
-    <% end %>
-  </div>
-
 
 <!-- GOOGLE MAPS ______________________________________________________________________________________-->
 
@@ -218,7 +152,7 @@
        * that contains the map. 
        */
       #map {
-        height: 100%;
+        height: 500px;
       }
 
       /* 
@@ -303,6 +237,7 @@
     </style>
   </head>
   <body>
+  <h1>Your To-Do List</h1>
     <div class="pac-card" id="pac-card">
       <div>
         <div id="title">Autocomplete search</div>
@@ -355,6 +290,75 @@
     ></script>
   </body>
 </html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    /* Custom Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    h1 {
+      color: #007bff;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .todo-item {
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .todo-item p {
+      margin-bottom: 5px;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Notice -->
+  <% if notice.present? %>
+    <div class="alert alert-success" role="alert">
+      <%= notice %>
+    </div>
+  <% end %>
+
+  <!-- Todo List -->
+  
+  <div id="todos">
+    <% @todos.each do |todo| %>
+      <div class="todo-item">
+        <%= render todo %>
+        <p>
+          <%= link_to "Show this todo", todo, class: "btn btn-primary btn-sm" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
 
   <!-- Actions ________________________________________________________________________________________ -->
   <div class="text-center mt-4">
