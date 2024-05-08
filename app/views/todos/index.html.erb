@@ -17,6 +17,7 @@
             position: { lat: <%= todo.location.latitude %>, lng: <%= todo.location.longitude %> },
             map: map,
             description: '<%= todo.description %>' // optional: display description on marker
+            
 
 
           });
@@ -25,14 +26,11 @@
           marker_<%= todo.id %>.addListener("click", () => {
             const infowindow = new google.maps.InfoWindow({
               content: `<h3>${marker_<%= todo.id %>.description}</h3>
-              <a href="/todos/<%= todo.id %>" data-method="delete" data-confirm="Are you sure?" data-turbo-frame="_top">Delete</a>`
+              <a href="/todos/<%= todo.id %>" data-method="delete" data-confirm="Are you sure?" data-turbo-frame="_top">Poglej</a>`
             });
             infowindow.open(map, marker_<%= todo.id %>);
           });
-          // if you click again on the marker the infowindow will close
-          marker_<%= todo.id %>.addListener("click", () => {
-            infowindow.close();
-          });
+          
 
         <% end %>
       }
