@@ -21,7 +21,6 @@
 
 
           });
-// on click display description in infowindow and make a obtion to delete the todo 
 
           marker_<%= todo.id %>.addListener("click", () => {
             const infowindow = new google.maps.InfoWindow({
@@ -38,22 +37,12 @@
       window.initMap = initMap;
     </script>
     <style>
-      /**
-       * @license
-       * Copyright 2019 Google LLC. All Rights Reserved.
-       * SPDX-License-Identifier: Apache-2.0
-       */
-      /* 
-       * Always set the map height explicitly to define the size of the div element
-       * that contains the map. 
-       */
+      
       #map {
         height: 500px;
       }
 
-      /* 
-       * Optional: Makes the sample page fill the window. 
-       */
+      
       html,
       body {
         height: 100%;
@@ -185,10 +174,21 @@
     .btn-primary {
       background-color: #007bff;
       border-color: #007bff;
+
+      margin-bottom: 30px;
     }
     .btn-primary:hover {
       background-color: #0056b3;
       border-color: #0056b3;
+    }
+    .btn-secondary {
+      background-color: #6c757d;
+      border-color: #6c757d;
+      margin-bottom: 30px;
+    }
+    .btn-secondary:hover {
+      background-color: #545b62;
+      border-color: #4e555b;
     }
   </style>
 </head>

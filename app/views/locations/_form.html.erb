@@ -13,37 +13,28 @@
 
   <div>
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+
+    <%= form.text_field :name , :required => true%>
   </div>
 
   <div>
-    <%
-=begin%>
+
+
  <%= form.label :address, style: "display: block" %>
-    <%= form.text_field :address %> 
+    <%= form.text_field :address, id: "location_address" %>
 
   </div>
 
   <div>
-    <%
-=begin%>
- <%= form.label :latitude, style: "display: block" %>
-    <%= form.text_field :latitude %> 
-<%
-=end%>
+    
+    <%= form.hidden_field :latitude, id: "location_latitude" %>
+
   </div>
 
   <div>
-    <%
-=begin%>
- <%= form.label :longitude, style: "display: block" %> 
-<%
-=end%>
-    <%
-=begin%>
- <%= form.text_field :longitude %> 
-<%
-=end%>
+    
+ <%= form.hidden_field :longitude , id: "location_longitude" %>
+
   </div>
 
   
@@ -110,8 +101,15 @@
           marker.setVisible(false);
 
           const place = autocomplete.getPlace();
-
           
+          // If the place is already in use then make an alert
+          if (!place.geometry) {
+            window.alert(
+              "Place is already in use, please select another place or make a todo with this place."
+            );
+            return;
+          }
+
 
           if (!place.geometry || !place.geometry.location) {
             // User entered the name of a Place that was not suggested and
@@ -132,6 +130,9 @@
 
           marker.setPosition(place.geometry.location);
           marker.setVisible(true);
+          document.getElementById("location_latitude").value = place.geometry.location.lat();
+        document.getElementById("location_longitude").value = place.geometry.location.lng();
+        document.getElementById("location_address").value = place.formatted_address;
           infowindowContent.children["place-name"].textContent = place.name;
           infowindowContent.children["place-address"].textContent =
             place.formatted_address;
@@ -188,9 +189,7 @@
         });
       }
       // rails form input field for longitude and latitude and adress
-      document.getElementById("location_latitude").value = place.geometry.location.lat();
-      document.getElementById("location_longitude").value = place.geometry.location.lng();
-      document.getElementById("location_address").value = place.formatted_address;
+      
 
 
 

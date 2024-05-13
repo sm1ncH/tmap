@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <title>Tmap</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
@@ -8,10 +9,9 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
-   <%= javascript_include_tag 'current_location' %> <!-- Include your new JavaScript file -->
+   <%= javascript_include_tag 'current_location' %> 
    
   <style>
-    /* Custom Styles */
     .navbar {
       background-color: #007bff !important;
       border: none !important;
@@ -33,6 +33,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
     <%= link_to "Tmap", root_path, class: "navbar-brand" %>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
